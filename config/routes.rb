@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
     resources :users, only: [:index, :show, :create, :update]
+    resources :faculties, only: [:index, :show, :create, :update]
+    resources :departments, only: [:index, :show, :create, :update]
+    resources :careers, only: [:index, :show, :create, :update]
+    resources :courses, only: [:index, :show, :create, :update]
   end
 
   post '/auth/login', to: 'auth#login'
