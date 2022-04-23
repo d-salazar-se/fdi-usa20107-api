@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
+  host: <%= if ENV["POSTGRES_PASSWORD"] then "db" else "localhost" end %>
   username: postgres
   password: password
   # For details on connection pooling, see Rails configuration guide

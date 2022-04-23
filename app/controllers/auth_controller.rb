@@ -4,8 +4,8 @@ class AuthController < ApplicationController
 
   def login
     token = params[:idToken]
-
-    payload = Google::Auth::IDTokens.verify_oidc(token, aud: ENV['GOOGLE_CLIENT_ID'])
+    
+    payload = Google::Auth::IDTokens.verify_oidc(token, aud: Rails.application.credentials.google[:client_id])
 
     email = payload['email']
 
