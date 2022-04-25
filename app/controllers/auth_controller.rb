@@ -1,6 +1,7 @@
 require 'googleauth'
 
 class AuthController < ApplicationController
+  skip_before_action :require_login, only: [:login]
 
   def login
     token = params[:idToken]
@@ -30,6 +31,11 @@ class AuthController < ApplicationController
   end
 
   def refresh
+  end
+
+  def logout
+    log_out
+    render(json: {}, status: 200)
   end
 
 end

@@ -4,5 +4,13 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update]
   end
 
-  post '/auth/login', to: 'auth#login'
+  resources :auth, except: [:index, :create, :show, :update, :destroy] do
+    collection do
+      post :login
+      get :logout
+    end
+  end
+
+  get '/auth/google_oauth2/callback', to: 'sessions#google_auth'
+  get '/auth/failure', to: redirect('/')
 end
