@@ -50,3 +50,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'googleauth'
 gem 'jwt'
 gem 'email_validator'
+gem 'httparty', '~> 0.20.0'
+gem 'activerecord-import', '~> 1.4'
