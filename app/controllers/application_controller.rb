@@ -10,9 +10,9 @@ class ApplicationController < ActionController::API
       begin
         @decoded = access_token_decode(header)
         @current_user = User.find(@decoded[:user][:id])
-      rescue JWT::DecodeError => e
+      rescue JWT::DecodeError, ActiveRecord::RecordNotFound => e
         return render(json: { errors: e.message }, status: :unauthorized)
-      rescue ActiveRecord::RecordNotFound => e
+      rescue StandardError => e
         return render(json: { errors: e.message }, status: :internal_server_error)
       end
     end

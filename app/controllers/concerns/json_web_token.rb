@@ -31,4 +31,21 @@ module JsonWebToken
 		decoded = JWT.decode(token, key=REFRESH_TOKEN_KEY).first
 		HashWithIndifferentAccess.new(decoded)
 	end
+
+	def refresh_credentials(refresh_token)
+		decoded = refresh_token_decode(refresh_token)
+		user = User.find(decoded[:user][:id])
+		new_access_token = access_token_encode(user)
+		build_credentials(new_access_token, refresh_token, user)
+	end
+
+	def build_credentials(access_token, refresh_token, user)
+		{
+			access_token: access_token,
+			token_type: "bearer",
+			expires_in: ACCESS_TOKEN_EXPIRATION.to_i,
+			refresh_token: refresh_token,
+			user: user.attributes,
+		}
+	end
 end
