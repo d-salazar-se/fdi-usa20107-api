@@ -48,3 +48,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'googleauth'
+gem 'jwt'
+gem 'email_validator'

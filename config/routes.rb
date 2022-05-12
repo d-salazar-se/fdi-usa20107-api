@@ -4,5 +4,11 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update]
   end
 
-  post '/auth/login', to: 'auth#login'
+  resources :auth, except: [:index, :create, :show, :update, :destroy] do
+    collection do
+      post :login
+      post :refresh
+      get :logout
+    end
+  end
 end
