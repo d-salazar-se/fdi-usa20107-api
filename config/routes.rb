@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       get :logout
     end
   end
+
+  resources :disabilities, only: [:index, :show, :create, :update, :destroy]
 end
