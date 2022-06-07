@@ -1,5 +1,4 @@
 class DisabilitiesController < ApplicationController
-  skip_before_action :authenticate_request, only: [:index, :show, :create, :update, :destroy]
   before_action :set_disability, only: [:show, :update, :destroy]
 
   # GET /disabilities
