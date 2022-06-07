@@ -1,19 +1,19 @@
 class Admin::DisabilitiesController < ApplicationController
   before_action :set_disability, only: [:show, :update, :destroy]
 
-  # GET /disabilities
+  # GET /admin/disabilities
   def index
     @disabilities = Disability.all
 
     render json: @disabilities
   end
 
-  # GET /disabilities/1
+  # GET /admin/disabilities/1
   def show
     render json: @disability
   end
 
-  # POST /disabilities
+  # POST /admin/disabilities
   def create
     @disability = Disability.new(disability_params)
 
@@ -24,7 +24,7 @@ class Admin::DisabilitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /disabilities/1
+  # PATCH/PUT /admin/disabilities/1
   def update
     if @disability.update(disability_params)
       render json: @disability
@@ -33,7 +33,7 @@ class Admin::DisabilitiesController < ApplicationController
     end
   end
 
-  # DELETE /disabilities/1
+  # DELETE /admin/disabilities/1
   def destroy
     @disability.destroy
   end
