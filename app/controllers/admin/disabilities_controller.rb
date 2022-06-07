@@ -1,4 +1,4 @@
-class DisabilitiesController < ApplicationController
+class Admin::DisabilitiesController < ApplicationController
   before_action :set_disability, only: [:show, :update, :destroy]
 
   # GET /disabilities
